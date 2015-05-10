@@ -1,6 +1,6 @@
 {
   "name": "realpath",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Expands symbolic links and prints the resolved absolute filepath",
   "license": "MIT",
   "repository": "sindresorhus/realpath",
