@@ -1,0 +1,45 @@
+{
+  "name": "realpath",
+  "version": "0.0.0",
+  "description": "Expands symbolic links and prints the resolved absolute filepath",
+  "license": "MIT",
+  "repository": "sindresorhus/realpath",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "bin",
+    "realpath",
+    "real",
+    "path",
+    "fs",
+    "file",
+    "file-system",
+    "coreutils",
+    "absolute",
+    "resolved",
+    "symlink",
+    "unix",
+    "posix"
+  ],
+  "dependencies": {
+    "meow": "^3.1.0"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
