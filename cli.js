@@ -12,7 +12,7 @@ var cli = meow({
 		'Example',
 		'  $ realpath ../unicorn',
 		'  /Users/sindresorhus/dev/unicorn'
-	].join('\n')
+	]
 });
 
 var filepath = cli.input[0];
