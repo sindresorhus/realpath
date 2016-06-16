@@ -37,6 +37,7 @@
     "posix"
   ],
   "dependencies": {
+    "fs.realpath": "^1.0.0",
     "meow": "^3.3.0"
   },
   "devDependencies": {

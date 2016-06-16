@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
-var fs = require('fs');
 var path = require('path');
+var realpath = require('fs.realpath');
 var meow = require('meow');
 
 var cli = meow({
@@ -25,7 +25,7 @@ if (!filepath) {
 filepath = path.resolve(filepath);
 
 try {
-	console.log(fs.realpathSync(filepath));
+	console.log(realpath.realpathSync(filepath));
 } catch (err) {
 	if (err.code === 'ENOENT') {
 		console.log(filepath);
