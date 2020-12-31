@@ -1,4 +1,4 @@
-# realpath [![Build Status](https://travis-ci.org/sindresorhus/realpath.svg?branch=master)](https://travis-ci.org/sindresorhus/realpath)
+# realpath
 
 > Expands symbolic links and prints the resolved absolute filepath
 
