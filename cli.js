@@ -1,37 +1,37 @@
 #!/usr/bin/env node
-'use strict';
-var path = require('path');
-var realpath = require('fs.realpath');
-var meow = require('meow');
+import process from 'node:process';
+import path from 'node:path';
+import realpath from 'fs.realpath';
+import meow from 'meow';
 
-var cli = meow({
-	help: [
-		'Usage',
-		'  $ realpath <filepath>',
-		'',
-		'Example',
-		'  $ realpath ../unicorn',
-		'  /Users/sindresorhus/dev/unicorn'
-	]
+const cli = meow(`
+	Usage
+	  $ realpath <filepath>
+
+	Example
+	  $ realpath ../unicorn
+	  /Users/sindresorhus/dev/unicorn
+`, {
+	importMeta: import.meta,
 });
 
-var filepath = cli.input[0];
+let filePath = cli.input[0];
 
-if (!filepath) {
-	console.error('Please supply a filepath');
+if (!filePath) {
+	console.error('Please specify a file path');
 	process.exit(1);
 }
 
-filepath = path.resolve(filepath);
+filePath = path.resolve(filePath);
 
 try {
-	console.log(realpath.realpathSync(filepath));
-} catch (err) {
-	if (err.code === 'ENOENT') {
-		console.log(filepath);
-		return;
+	console.log(realpath.realpathSync(filePath));
+} catch (error) {
+	if (error.code === 'ENOENT') {
+		console.log(filePath);
+		process.exit();
 	}
 
-	console.error(err.message);
+	console.error(error.message);
 	process.exit(1);
 }

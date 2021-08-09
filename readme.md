@@ -4,13 +4,11 @@
 
 Similar to coreutils [`realpath`](http://www.gnu.org/software/coreutils/manual/html_node/realpath-invocation.html).
 
-
 ## Install
 
 ```
 $ npm install --global realpath
 ```
-
 
 ## Usage
 
@@ -24,8 +22,3 @@ $ realpath --help
     $ realpath ../unicorn
     /Users/sindresorhus/dev/unicorn
 ```
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
