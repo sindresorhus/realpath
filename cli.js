@@ -8,11 +8,27 @@ const cli = meow(`
 	Usage
 	  $ realpath <filepath>
 
+	Options
+	  --relative-to=DIR  Print the resolved path relative to DIR
+	  --no-symlinks, -s  Don't expand symlinks
+
 	Example
 	  $ realpath ../unicorn
-	  /Users/sindresorhus/dev/unicorn
+	  $ realpath --no-symlinks /tmp/link
+	  $ realpath --relative-to /Users/sindresorhus/dev ../unicorn
 `, {
 	importMeta: import.meta,
+	flags: {
+		relativeTo: {
+			type: 'string',
+		},
+		symlinks: {
+			type: 'boolean',
+			default: true,
+			shortFlag: 's',
+			aliases: ['strip'],
+		},
+	},
 });
 
 let filePath = cli.input[0];
@@ -22,16 +38,20 @@ if (!filePath) {
 	process.exit(1);
 }
 
-filePath = path.resolve(filePath);
-
-try {
-	console.log(realpath.realpathSync(filePath));
-} catch (error) {
-	if (error.code === 'ENOENT') {
-		console.log(filePath);
-		process.exit();
+if (cli.flags.symlinks) {
+	try {
+		filePath = realpath.realpathSync(filePath);
+	} catch (error) {
+		console.error(error.message);
+		process.exit(1);
 	}
-
-	console.error(error.message);
-	process.exit(1);
+} else {
+	filePath = path.resolve(filePath);
 }
+
+if (cli.flags.relativeTo) {
+	const base = path.resolve(cli.flags.relativeTo);
+	filePath = path.relative(base, filePath);
+}
+
+console.log(filePath);

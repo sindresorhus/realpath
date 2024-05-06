@@ -18,7 +18,12 @@ $ realpath --help
   Usage
     $ realpath <filepath>
 
+  Options
+    --relative-to=DIR  Print the resolved path relative to DIR
+    --no-symlinks, -s  Don't expand symlinks
+
   Example
     $ realpath ../unicorn
-    /Users/sindresorhus/dev/unicorn
+    $ realpath --no-symlinks /tmp/link
+    $ realpath --relative-to /Users/sindresorhus/dev ../unicorn
 ```
