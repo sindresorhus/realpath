@@ -6,8 +6,8 @@ Similar to coreutils [`realpath`](http://www.gnu.org/software/coreutils/manual/h
 
 ## Install
 
-```
-$ npm install --global realpath
+```sh
+npm install --global realpath
 ```
 
 ## Usage
